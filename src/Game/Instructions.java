@@ -1,6 +1,8 @@
 package Game;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class Instructions {
+public class Instructions implements ActionListener {
 	public static void main(String[] args) {
 		Instructions a = new Instructions();
 
@@ -27,7 +29,17 @@ public class Instructions {
 		panel.setLayout(new GridLayout(2, 1));
 		panel.add(label);
 		panel.add(button);
+		button.addActionListener(this);
 		frame.pack();
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		frame.setVisible(false);
+		AlchemyGame game = new AlchemyGame();
+		game.gameframe();
 
 	}
 }
