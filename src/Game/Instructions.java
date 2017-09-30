@@ -40,6 +40,7 @@ public class Instructions implements ActionListener {
 		frame.setVisible(false);
 		AlchemyGame game = new AlchemyGame();
 		game.gameframe();
+		game.run();
 
 	}
 }

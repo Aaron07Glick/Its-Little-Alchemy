@@ -1,7 +1,6 @@
 package Game;
 
-public class Element{
-	
+public class Element {
 
 	ElementsName elements;
 
@@ -9,7 +8,7 @@ public class Element{
 		AIR, EARTH, FIRE, WATER
 	}
 
-	Elements() {
+	Element() {
 		this.elements = ElementsName.AIR;
 	}
 
