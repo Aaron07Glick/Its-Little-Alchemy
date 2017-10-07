@@ -9,9 +9,9 @@ public class SideBar {
 	int height;
 
 	SideBar() {
-		this.x = 1900;
+		this.x = 1800;
 		this.y = 0;
-		this.width = 100;
+		this.width = 120;
 		this.height = 1000;
 	}
 

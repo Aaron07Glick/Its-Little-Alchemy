@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 public class Instructions implements ActionListener {
 	public static void main(String[] args) {
 		Instructions a = new Instructions();
-
+		// new AlchemyGame();
 	}
 
 	JFrame frame = new JFrame("INSTRUCTIONS");
