@@ -8,14 +8,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class AlchemyGame extends JComponent implements ActionListener, Runnable, MouseMotionListener, MouseListener {
+	Element elements[];
 	Timer paintTicker = new Timer(20, this);
 
 	JFrame gameframe = new JFrame();
+
+	Icon fire = new ImageIcon("Fire.png");
 
 	SideBar sidebar = new SideBar();
 	int x = 1840;
@@ -27,10 +32,17 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	}
 
 	AlchemyGame() {
+		elements = new Element[0];
 		gameframe.setSize(2000, 1000);
 		gameframe.addMouseListener(this);
 		gameframe.addMouseMotionListener(this);
+		if (elements == null) {
+			for (int i = 0; i < 4; i++) {
+				elements[i] = new Element(i);
+				elements[i].setY((elements.length + 1) * 10);
+			}
 
+		}
 	}
 
 	public void paint(Graphics g) {
@@ -39,6 +51,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		sidebar.display(g);
 		g.setColor(Color.red);
 		g.fillRect(x, y, 50, 50);
+		// fire.fillRect(50, 50, 50, 50);
 
 	}
 
@@ -58,6 +71,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		// TODO Auto-generated method stub
 		x = e.getX();
 		y = e.getY();
+
 	}
 
 	@Override
