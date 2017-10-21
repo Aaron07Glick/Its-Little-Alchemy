@@ -14,6 +14,8 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import Game.Element.ElementName;
+
 public class AlchemyGame extends JComponent implements ActionListener, Runnable, MouseMotionListener, MouseListener {
 	Element elements[];
 	Timer paintTicker = new Timer(20, this);
@@ -51,7 +53,11 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		sidebar.display(g);
 		g.setColor(Color.red);
 		g.fillRect(x, y, 50, 50);
-		// fire.fillRect(50, 50, 50, 50);
+		//g.setColor(Color.blue);
+		//g.fillRect(x, y, 25, 25);
+		for (int i = 0; i < 4; i++) {
+			g.fillRect(getX(), getY(), 50, 50);
+		}
 
 	}
 
