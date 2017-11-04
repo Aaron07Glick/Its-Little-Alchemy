@@ -1,13 +1,13 @@
 package Game;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Element {
 	int x;
 	int y;
 	Color color;
 	ElementName elementName;
-	
 
 	enum ElementName {
 		AIR, EARTH, FIRE, WATER
@@ -18,19 +18,19 @@ public class Element {
 		case 0:
 			this.elementName = ElementName.AIR;
 			this.color = Color.WHITE;
-			this.x = 1840;
+
 		case 1:
 			this.elementName = ElementName.EARTH;
 			this.color = Color.black;
-			this.x = 1840;
+
 		case 2:
 			this.elementName = ElementName.FIRE;
 			this.color = Color.black;
-			this.x = 1840;
+
 		case 3:
 			this.elementName = ElementName.WATER;
 			this.color = color.blue;
-			this.x = 1840;
+
 		}
 		this.x = 1840;
 
@@ -68,5 +68,10 @@ public class Element {
 		default:
 			return 0;
 		}
+	}
+
+	void draw(Graphics g) {
+		g.setColor(this.color);
+		g.fillRect(x, y, 50, 50);
 	}
 }
