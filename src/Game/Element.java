@@ -8,31 +8,37 @@ public class Element {
 	int y;
 	Color color;
 	ElementName elementName;
+	int id;
 
 	enum ElementName {
 		AIR, EARTH, FIRE, WATER
 	}
 
 	Element(int id) {
+		this.x = 1840;
+		this.id = id;
 		switch (id) {
 		case 0:
 			this.elementName = ElementName.AIR;
 			this.color = Color.WHITE;
-
+			System.out.println("created air");
+			break;
 		case 1:
 			this.elementName = ElementName.EARTH;
-			this.color = Color.black;
-
+			this.color = Color.gray;
+			System.out.println("created earth");
+			break;
 		case 2:
 			this.elementName = ElementName.FIRE;
-			this.color = Color.black;
-
+			this.color = Color.red;
+			System.out.println("create fire");
+			break;
 		case 3:
 			this.elementName = ElementName.WATER;
-			this.color = color.blue;
-
+			this.color = Color.blue;
+			System.out.println("created water");
+			break;
 		}
-		this.x = 1840;
 
 	}
 

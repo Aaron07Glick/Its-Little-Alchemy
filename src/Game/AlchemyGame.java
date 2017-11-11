@@ -22,7 +22,8 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	JFrame gameframe = new JFrame();
 
 	Icon fire = new ImageIcon("Fire.png");
-
+	Element clicked;
+	Element newElement;
 	SideBar sidebar = new SideBar();
 	int x = 1840;
 	int y = 10;
@@ -38,8 +39,9 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		gameframe.addMouseListener(this);
 		gameframe.addMouseMotionListener(this);
 		if (elements.isEmpty()) {
-			System.out.println("test");
+
 			for (int i = 0; i < 4; i++) {
+				System.out.println("creating elements:" + i);
 				elements.add(new Element(i));
 				elements.get(i).setY((elements.size()) * 60);
 			}
@@ -72,22 +74,24 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		// x = e.getX();
-		// y = e.getY();
-		for (Element element : elements) {
-			if (e.getX() > element.getX() && e.getX() < (element.getX())) {
-				if (e.getY() > element.getY() && e.getY() < (element.getY())) {
-					element.setX(e.getX());
-					element.setY(e.getY());
-				}
-			}
+		if (clicked != null) {
+			x = e.getX();
+			y = e.getY();
+			// clicked.setX(x);
+			// clicked.setY(y);
+
+			newElement.setX(x);
+			newElement.setY(y);
 		}
-		/*
-		 * elements.get(0).x = e.getX(); elements.get(0).y = e.getY(); elements.get(1).x
-		 * = e.getX(); elements.get(1).y = e.getY(); elements.get(2).x = e.getX();
-		 * elements.get(2).y = e.getY(); elements.get(3).x = e.getX(); elements.get(3).y
-		 * = e.getY();
-		 */
+
+		elements.get(0).x = e.getX();
+		elements.get(0).y = e.getY();
+		elements.get(1).x = e.getX();
+		elements.get(1).y = e.getY();
+		elements.get(2).x = e.getX();
+		elements.get(2).y = e.getY();
+		elements.get(3).x = e.getX();
+		elements.get(3).y = e.getY();
 
 	}
 
@@ -100,20 +104,31 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		// System.out.println("test");
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		// System.out.println("test");
-
+		int originalLength = elements.size();
+		for (int i = 0; i < originalLength; i++) {
+			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 50)) {
+				// System.out.println("test");
+				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 50)) {
+					clicked = elements.get(i);
+					newElement = new Element(clicked.id);
+					elements.add(newElement);
+					System.out.println(clicked.elementName);
+				}
+			}
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		clicked = null;
 	}
 
 	@Override
