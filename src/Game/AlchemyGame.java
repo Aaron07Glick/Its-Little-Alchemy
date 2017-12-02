@@ -18,9 +18,7 @@ import javax.swing.Timer;
 public class AlchemyGame extends JComponent implements ActionListener, Runnable, MouseMotionListener, MouseListener {
 	ArrayList<Element> elements = new ArrayList<>();
 	Timer paintTicker = new Timer(20, this);
-
 	JFrame gameframe = new JFrame();
-
 	Icon fire = new ImageIcon("Fire.png");
 	Element clicked;
 	Element newElement;
@@ -47,13 +45,14 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 			}
 
 		}
+		{
+
+		}
 	}
 
 	public void paint(Graphics g) {
-		// Graphics2D g2 = (Graphics2D)g;
 		g.setColor(Color.black);
 		sidebar.display(g);
-		// g.setColor(Color.blue);
 		for (int i = 0; i < elements.size(); i++) {
 			elements.get(i).draw(g);
 
@@ -62,64 +61,48 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		repaint();
 	}
 
 	public void gameframe() {
-		// TODO Auto-generated method stub
 		gameframe.setVisible(true);
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
 		if (clicked != null) {
 			x = e.getX();
 			y = e.getY();
-			// clicked.setX(x);
-			// clicked.setY(y);
-
 			newElement.setX(x);
 			newElement.setY(y);
 		}
 
-		elements.get(0).x = e.getX();
-		elements.get(0).y = e.getY();
-		elements.get(1).x = e.getX();
-		elements.get(1).y = e.getY();
-		elements.get(2).x = e.getX();
-		elements.get(2).y = e.getY();
-		elements.get(3).x = e.getX();
-		elements.get(3).y = e.getY();
-
+		newElement.x = e.getX() - 25;
+		newElement.y = e.getY() - 25;
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		// System.out.println("mouse moved");
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		// System.out.println("test");
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		// System.out.println("test");
 		int originalLength = elements.size();
 		for (int i = 0; i < originalLength; i++) {
 			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 50)) {
-				// System.out.println("test");
 				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 50)) {
 					clicked = elements.get(i);
-					newElement = new Element(clicked.id);
-					elements.add(newElement);
+					newElement = clicked;
+					if (!(elements.contains(newElement))) {
+						elements.add(newElement);
+					}
+
 					System.out.println(clicked.elementName);
+
 				}
 			}
 		}
@@ -128,7 +111,28 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+		int element1 = 0;
+		int element2 = 0;
+		int elementcount = 0;
 		clicked = null;
+		int originalLength = elements.size();
+		for (int i = 0; i < originalLength; i++) {
+			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 50)) {
+				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 50)) {
+					elementcount++;
+					System.out.println(elementcount);
+
+					if (elementcount == 2) {
+						System.out.println("combining elements");
+						System.out.println(elements.get(i).elementName);
+						System.out.println(elements.get(element1).elementName);
+						break;
+					}
+					element1 = i;
+				}
+			}
+		}
+
 	}
 
 	@Override
