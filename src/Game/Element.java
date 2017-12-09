@@ -2,6 +2,7 @@ package Game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.HashMap;
 
 public class Element {
 	int x;
@@ -9,37 +10,47 @@ public class Element {
 	Color color;
 	ElementName elementName;
 	int id;
-
+	HashMap<Integer, Integer>map = new HashMap<>();
 	enum ElementName {
 		AIR, EARTH, FIRE, WATER
 	}
-
+	String name;
 	Element(int id) {
 		this.x = 1840;
 		this.id = id;
+		map.put(hash(name, name), 0);
+		map.put(hash(name, name), 1);
+		map.put(hash(name, name), 2);
+		map.put(hash(name, name), 3);
 		switch (id) {
 		case 0:
 			this.elementName = ElementName.AIR;
 			this.color = Color.WHITE;
 			System.out.println("created air");
+			this.name = "air";
 			break;
 		case 1:
 			this.elementName = ElementName.EARTH;
 			this.color = Color.gray;
 			System.out.println("created earth");
+			this.name = "earth";
 			break;
 		case 2:
 			this.elementName = ElementName.FIRE;
 			this.color = Color.red;
 			System.out.println("create fire");
+			this.name = "fire";
 			break;
 		case 3:
 			this.elementName = ElementName.WATER;
 			this.color = Color.blue;
 			System.out.println("created water");
+			this.name = "water";
 			break;
+			
 		}
-
+		
+		//new Element(map.get(hash(name, name)));
 	}
 
 	int getX() {
@@ -79,5 +90,15 @@ public class Element {
 	void draw(Graphics g) {
 		g.setColor(this.color);
 		g.fillRect(x, y, 50, 50);
+	}
+	public int hash(String a, String b) {
+		int sum = 0;
+		String bigString = a + b;
+		char[] chars = bigString.toCharArray();
+		for (char c : chars) {
+			sum += (int) c;
+		}
+		return sum;
+		
 	}
 }
