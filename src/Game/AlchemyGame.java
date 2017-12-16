@@ -121,10 +121,9 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		for (int i = 0; i < elements.size(); i++) {
 			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 50)) {
 				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 50)) {
-					elementcount++;
-					System.out.println(elementcount);
+					
 
-					if (elementcount == 2) {
+					
 //						System.out.println("combining elements");
 //						System.out.println(elements.get(i).elementName);
 //						System.out.println(elements.get(element1).elementName);
@@ -136,7 +135,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 								elements.remove(elements.get(i));
 								elements.remove(clicked);
 								elements.add(temp);
-								//break;
+								break;
 							}
 						
 							if (recipebook.get(j).id2 == clicked.id && recipebook.get(j).id1 == elements.get(i).id) {
@@ -146,12 +145,12 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 								elements.remove(elements.get(i));
 								elements.remove(clicked);
 								elements.add(temp);
-								//break;
+								break;
 							}
 							
 						}
-						break;
-					}
+						
+					
 					element1 = i;
 				}
 			}
