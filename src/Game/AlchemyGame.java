@@ -35,6 +35,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 
 	AlchemyGame() {
 		recipebook.add(new Recipe(2, 3, 1));
+		recipebook.add(new Recipe(0,1,2));
 		gameframe.setSize(2000, 1000);
 		gameframe.addMouseListener(this);
 		gameframe.addMouseMotionListener(this);

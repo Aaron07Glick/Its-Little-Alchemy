@@ -47,6 +47,7 @@ public class Element {
 			System.out.println("created water");
 			this.name = "water";
 			break;
+		//case 4:
 			
 		}
 		
