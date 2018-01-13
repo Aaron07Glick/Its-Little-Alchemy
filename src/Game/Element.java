@@ -10,9 +10,10 @@ public class Element {
 	Color color;
 	ElementName elementName;
 	int id;
+	boolean sidebar;
 	HashMap<Integer, Integer>map = new HashMap<>();
 	enum ElementName {
-		AIR, EARTH, FIRE, WATER
+		AIR, EARTH, FIRE, WATER, STEAM, PRESSURE, STONE, MIST, MUD, BRICK, WALL, HOUSE, CITY, POND, SEA, LAVA, VOLCANO, ISLAND, LAND, CONTINET, PLANET, RAIN, PLANT, GUNPOWDER, 
 	}
 	String name;
 	Element(int id) {
@@ -101,5 +102,11 @@ public class Element {
 		}
 		return sum;
 		
+	}
+	public boolean getSideBar() {
+		return sidebar;
+	}
+	public void setSidebar(boolean sidebar) {
+		this.sidebar = sidebar;
 	}
 }

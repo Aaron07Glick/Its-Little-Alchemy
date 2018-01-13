@@ -26,7 +26,6 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	int x = 1840;
 	int y = 10;
 	ArrayList<Recipe> recipebook = new ArrayList<>();
-	
 
 	public void run() {
 		gameframe.add(this);
@@ -35,7 +34,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 
 	AlchemyGame() {
 		recipebook.add(new Recipe(2, 3, 1));
-		recipebook.add(new Recipe(0,1,2));
+		recipebook.add(new Recipe(0, 1, 2));
 		gameframe.setSize(2000, 1000);
 		gameframe.addMouseListener(this);
 		gameframe.addMouseMotionListener(this);
@@ -44,6 +43,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 			for (int i = 0; i < 4; i++) {
 				System.out.println("creating elements:" + i);
 				elements.add(new Element(i));
+				elements.get(i).setSidebar(true);
 				elements.get(i).setY((elements.size()) * 60);
 			}
 
@@ -82,7 +82,6 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 			newElement.y = e.getY() - 25;
 		}
 
-		
 	}
 
 	@Override
@@ -99,14 +98,27 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		for (int i = 0; i < originalLength; i++) {
 			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 50)) {
 				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 50)) {
-					clicked = elements.get(i);
-					newElement = clicked;
-					if (!(elements.contains(newElement))) {
-						elements.add(newElement);
+					if (!(elements.get(i).getSideBar())) {
+						clicked = elements.get(i);
+						newElement = clicked;
+						if (!(elements.contains(newElement))) {
+							elements.add(newElement);
+						}
+
+						System.out.println(clicked.elementName);
+					} else {
+						clicked = new Element(elements.get(i).id);
+						clicked.setX(elements.get(i).getX());
+						clicked.setY(elements.get(i).getY());
+						newElement = clicked;
+						if (!(elements.contains(newElement))) {
+							elements.add(newElement);
+						}
+
+						System.out.println(clicked.elementName);
+						clicked.setSidebar(false);
+
 					}
-
-					System.out.println(clicked.elementName);
-
 				}
 			}
 		}
@@ -118,40 +130,37 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		int element1 = 0;
 		int element2 = 0;
 		int elementcount = 0;
-		
+
 		for (int i = 0; i < elements.size(); i++) {
 			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 50)) {
 				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 50)) {
-					
 
-					
-//						System.out.println("combining elements");
-//						System.out.println(elements.get(i).elementName);
-//						System.out.println(elements.get(element1).elementName);
-						for (int j = 0; j < recipebook.size(); j++) {
-							if (recipebook.get(j).id1 == clicked.id && recipebook.get(j).id2 == elements.get(i).id) {
-								Element temp = new Element(recipebook.get(j).product);
-								temp.x = e.getX();
-								temp.y = e.getY();
-								elements.remove(elements.get(i));
-								elements.remove(clicked);
-								elements.add(temp);
-								break;
-							}
-						
-							if (recipebook.get(j).id2 == clicked.id && recipebook.get(j).id1 == elements.get(i).id) {
-								Element temp = new Element(recipebook.get(j).product);
-								temp.x = e.getX();
-								temp.y = e.getY();
-								elements.remove(elements.get(i));
-								elements.remove(clicked);
-								elements.add(temp);
-								break;
-							}
-							
+					// System.out.println("combining elements");
+					// System.out.println(elements.get(i).elementName);
+					// System.out.println(elements.get(element1).elementName);
+					for (int j = 0; j < recipebook.size(); j++) {
+						if (recipebook.get(j).id1 == clicked.id && recipebook.get(j).id2 == elements.get(i).id) {
+							Element temp = new Element(recipebook.get(j).product);
+							temp.x = e.getX();
+							temp.y = e.getY();
+							elements.remove(elements.get(i));
+							elements.remove(clicked);
+							elements.add(temp);
+							break;
 						}
-						
-					
+
+						if (recipebook.get(j).id2 == clicked.id && recipebook.get(j).id1 == elements.get(i).id) {
+							Element temp = new Element(recipebook.get(j).product);
+							temp.x = e.getX();
+							temp.y = e.getY();
+							elements.remove(elements.get(i));
+							elements.remove(clicked);
+							elements.add(temp);
+							break;
+						}
+
+					}
+
 					element1 = i;
 				}
 			}
