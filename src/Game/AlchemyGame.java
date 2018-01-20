@@ -33,13 +33,12 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	}
 
 	AlchemyGame() {
-		recipebook.add(new Recipe(2, 3, 1));
-		recipebook.add(new Recipe(0, 1, 2));
+		recipebook.add(new Recipe(0, 2, 4));
 		gameframe.setSize(2000, 1000);
 		gameframe.addMouseListener(this);
 		gameframe.addMouseMotionListener(this);
 		if (elements.isEmpty()) {
-
+			
 			for (int i = 0; i < 4; i++) {
 				System.out.println("creating elements:" + i);
 				elements.add(new Element(i));
@@ -146,6 +145,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 							elements.remove(elements.get(i));
 							elements.remove(clicked);
 							elements.add(temp);
+							
 							break;
 						}
 
@@ -178,5 +178,18 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	void sideBarAdd(int tempId) {
+		//Graphics g;
+		int count = 0;
+		for(Element element: elements) {
+			if (element.sidebar) {
+				count++;
+			}
+		}
+		//math for location goes here
+		elements.add(new Element(tempId));
+		elements.get(elements.size()-1).setSidebar(true);
+		//elements.get(elements.size()-1).draw(g);
 	}
 }

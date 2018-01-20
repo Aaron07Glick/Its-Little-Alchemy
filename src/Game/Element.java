@@ -48,7 +48,12 @@ public class Element {
 			System.out.println("created water");
 			this.name = "water";
 			break;
-		//case 4:
+		case 4:
+			this.elementName = ElementName.STEAM;
+			this.color = Color.GRAY;
+			System.out.println("created Steam");
+			this.name = "steam";
+			break;
 			
 		}
 		
@@ -84,6 +89,10 @@ public class Element {
 
 		case WATER:
 			return 4;
+		
+		case STEAM:
+			return 5;
+		
 		default:
 			return 0;
 		}
