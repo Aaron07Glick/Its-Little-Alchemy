@@ -13,7 +13,13 @@ public class Element {
 	boolean sidebar;
 	HashMap<Integer, Integer>map = new HashMap<>();
 	enum ElementName {
-		AIR, EARTH, FIRE, WATER, STEAM, PRESSURE, STONE, MIST, MUD, BRICK, WALL, HOUSE, CITY, POND, SEA, LAVA, VOLCANO, ISLAND, LAND, CONTINET, PLANET, RAIN, PLANT, GUNPOWDER, 
+		AIR, EARTH, FIRE, WATER, STEAM, PRESSURE, STONE, MIST, MUD, BRICK,
+		WALL, HOUSE, CITY, POND, SEA, LAVA, VOLCANO, ISLAND, LAND, CONTINET, 
+		PLANET, RAIN, PLANT, GUNPOWDER, ENERGY, DUST, SWAMP, LIFE, SAND, TIME,
+		HUMAN, CLOCK, GLASS, METAL, BLADE, SWORD, COMPUTER, ELECTRITY, SUPERCOMPUTER,
+		TIMEMACHINE, 
+		
+		
 	}
 	String name;
 	Element(int id) {
@@ -54,7 +60,24 @@ public class Element {
 			System.out.println("created Steam");
 			this.name = "steam";
 			break;
-			
+		case 5:
+			this.elementName = ElementName.PRESSURE;
+			this.color = Color.GRAY;
+			System.out.println("created Pressure");
+			this.name = "pressure";
+			break;
+		case 6:
+			this.elementName = ElementName.STONE;
+			this.color = Color.GRAY;
+			System.out.println("Created Stone");
+			this.name = "stone";
+			break;
+		case 7:
+			this.elementName= ElementName.MIST;
+			this.color = Color.WHITE;
+			System.out.println("Created Mist");
+			this.name = "Mist";
+			break;
 		}
 		
 		//new Element(map.get(hash(name, name)));
@@ -93,6 +116,15 @@ public class Element {
 		case STEAM:
 			return 5;
 		
+		case PRESSURE:
+			return 6;
+		
+		case STONE:
+			return 7;
+		
+		case MIST:
+			return 8;
+			
 		default:
 			return 0;
 		}

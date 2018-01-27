@@ -17,6 +17,7 @@ import javax.swing.Timer;
 
 public class AlchemyGame extends JComponent implements ActionListener, Runnable, MouseMotionListener, MouseListener {
 	ArrayList<Element> elements = new ArrayList<>();
+	ArrayList<Element> sideElement = new ArrayList<>();
 	Timer paintTicker = new Timer(20, this);
 	JFrame gameframe = new JFrame();
 	Icon fire = new ImageIcon("Fire.png");
@@ -34,6 +35,8 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 
 	AlchemyGame() {
 		recipebook.add(new Recipe(0, 2, 4));
+		recipebook.add(new Recipe(0, 4, 5));
+		recipebook.add(new Recipe(0, 5, 7));
 		gameframe.setSize(2000, 1000);
 		gameframe.addMouseListener(this);
 		gameframe.addMouseMotionListener(this);
@@ -41,9 +44,11 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 			
 			for (int i = 0; i < 4; i++) {
 				System.out.println("creating elements:" + i);
+				
 				elements.add(new Element(i));
 				elements.get(i).setSidebar(true);
 				elements.get(i).setY((elements.size()) * 60);
+				
 			}
 
 		}
@@ -145,7 +150,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 							elements.remove(elements.get(i));
 							elements.remove(clicked);
 							elements.add(temp);
-							
+							sideBarAdd(i);
 							break;
 						}
 
@@ -156,6 +161,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 							elements.remove(elements.get(i));
 							elements.remove(clicked);
 							elements.add(temp);
+							sideBarAdd(i);
 							break;
 						}
 
@@ -187,8 +193,11 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 				count++;
 			}
 		}
+		count++;
 		//math for location goes here
-		elements.add(new Element(tempId));
+		Element element  = new Element(tempId);
+		elements.add(element);
+		element.setY(count*60);
 		elements.get(elements.size()-1).setSidebar(true);
 		//elements.get(elements.size()-1).draw(g);
 	}
