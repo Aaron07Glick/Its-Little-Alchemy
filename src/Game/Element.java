@@ -2,7 +2,12 @@ package Game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+
+import javax.imageio.ImageIO;
 
 public class Element {
 	int x;
@@ -11,13 +16,14 @@ public class Element {
 	ElementName elementName;
 	int id;
 	boolean sidebar;
+	BufferedImage img = null;
 	HashMap<Integer, Integer>map = new HashMap<>();
 	enum ElementName {
 		AIR, EARTH, FIRE, WATER, STEAM, PRESSURE, STONE, MIST, MUD, BRICK,
 		WALL, HOUSE, CITY, POND, SEA, LAVA, VOLCANO, ISLAND, LAND, CONTINET, 
 		PLANET, RAIN, PLANT, GUNPOWDER, ENERGY, DUST, SWAMP, LIFE, SAND, TIME,
 		HUMAN, CLOCK, GLASS, METAL, BLADE, SWORD, COMPUTER, ELECTRITY, SUPERCOMPUTER,
-		TIMEMACHINE, 
+		TIMEMACHINE,
 		
 		
 	}
@@ -32,49 +38,50 @@ public class Element {
 		switch (id) {
 		case 0:
 			this.elementName = ElementName.AIR;
-			this.color = Color.WHITE;
+			img = loadimg("src/air.png");
 			System.out.println("created air");
 			this.name = "Air";
 			break;
 		case 1:
 			this.elementName = ElementName.EARTH;
-			this.color = Color.gray;
+			img = loadimg("src/earth.png");
 			System.out.println("created earth");
 			this.name = "Earth";
 			break;
 		case 2:
 			this.elementName = ElementName.FIRE;
-			this.color = Color.red;
+			//this.color = Color.red;
+			img = loadimg("src/fire.png");
 			System.out.println("create fire");
 			this.name = "Fire";
 			break;
 		case 3:
 			this.elementName = ElementName.WATER;
-			this.color = Color.blue;
+			img = loadimg("src/water.png");
 			System.out.println("created water");
 			this.name = "Water";
 			break;
 		case 4:
 			this.elementName = ElementName.STEAM;
-			this.color = Color.GRAY;
+			img = loadimg("src/steam.png");
 			System.out.println("created Steam");
 			this.name = "Steam";
 			break;
 		case 5:
 			this.elementName = ElementName.PRESSURE;
-			this.color = Color.GRAY;
+			img = loadimg("src/pressure.png");
 			System.out.println("created Pressure");
 			this.name = "Pressure";
 			break;
 		case 6:
 			this.elementName = ElementName.STONE;
-			this.color = Color.GRAY;
+			img = loadimg("src/stone.png");
 			System.out.println("Created Stone");
 			this.name = "Stone";
 			break;
 		case 7:
 			this.elementName= ElementName.MIST;
-			this.color = Color.WHITE;
+			img = loadimg("src/mist.png");
 			System.out.println("Created Mist");
 			this.name = "Mist";
 			break;
@@ -267,8 +274,9 @@ public class Element {
 	}
 
 	void draw(Graphics g) {
-		g.setColor(this.color);
-		g.fillRect(x, y, 50, 50);
+		g.drawImage(img, x, y, 64, 64, null);
+//		g.setColor(this.color);
+//		g.fillRect(x, y, 50, 50);
 	}
 	public int hash(String a, String b) {
 		int sum = 0;
@@ -285,5 +293,14 @@ public class Element {
 	}
 	public void setSidebar(boolean sidebar) {
 		this.sidebar = sidebar;
+	}
+	BufferedImage loadimg(String path) {
+		BufferedImage elementImg = null;
+		try {
+		  elementImg = ImageIO.read(new File(path));
+		} catch (IOException e) {
+			System.out.println("Image not found: " + e);
+		}
+		return elementImg;
 	}
 }

@@ -20,7 +20,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	ArrayList<Element> sideElement = new ArrayList<>();
 	Timer paintTicker = new Timer(20, this);
 	JFrame gameframe = new JFrame();
-	Icon fire = new ImageIcon("Fire.png");
+	//fire = new Image("flame (1).png");
 	Element clicked;
 	Element newElement;
 	SideBar sidebar = new SideBar();
