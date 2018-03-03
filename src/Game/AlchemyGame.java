@@ -20,7 +20,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	ArrayList<Element> sideElement = new ArrayList<>();
 	Timer paintTicker = new Timer(20, this);
 	JFrame gameframe = new JFrame();
-	//fire = new Image("flame (1).png");
+	// fire = new Image("flame (1).png");
 	Element clicked;
 	Element newElement;
 	SideBar sidebar = new SideBar();
@@ -37,18 +37,20 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		recipebook.add(new Recipe(0, 2, 4));
 		recipebook.add(new Recipe(0, 4, 5));
 		recipebook.add(new Recipe(0, 5, 7));
+		recipebook.add(new Recipe(1, 3, 13));
+
 		gameframe.setSize(2000, 1000);
 		gameframe.addMouseListener(this);
 		gameframe.addMouseMotionListener(this);
 		if (elements.isEmpty()) {
-			
+
 			for (int i = 0; i < 4; i++) {
 				System.out.println("creating elements:" + i);
-				
+
 				elements.add(new Element(i));
 				elements.get(i).setSidebar(true);
-				elements.get(i).setY((elements.size()) * 60);
-				
+				elements.get(i).setY((elements.size()) * 80);
+
 			}
 
 		}
@@ -100,8 +102,8 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 	public void mousePressed(MouseEvent e) {
 		int originalLength = elements.size();
 		for (int i = 0; i < originalLength; i++) {
-			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 50)) {
-				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 50)) {
+			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 100)) {
+				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 100)) {
 					if (!(elements.get(i).getSideBar())) {
 						clicked = elements.get(i);
 						newElement = clicked;
@@ -136,33 +138,36 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		int elementcount = 0;
 
 		for (int i = 0; i < elements.size(); i++) {
-			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 50)) {
-				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 50)) {
+			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 90)) {
+				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 90)) {
 
 					// System.out.println("combining elements");
 					// System.out.println(elements.get(i).elementName);
 					// System.out.println(elements.get(element1).elementName);
-					for (int j = 0; j < recipebook.size(); j++) {
-						if (recipebook.get(j).id1 == clicked.id && recipebook.get(j).id2 == elements.get(i).id) {
-							Element temp = new Element(recipebook.get(j).product);
-							temp.x = e.getX();
-							temp.y = e.getY();
-							elements.remove(elements.get(i));
-							elements.remove(clicked);
-							elements.add(temp);
-							sideBarAdd(i);
-							break;
-						}
+					if (clicked != null) {
+						for (int j = 0; j < recipebook.size(); j++) {
+							if (recipebook.get(j).id1 == clicked.id && recipebook.get(j).id2 == elements.get(i).id) {
+								Element temp = new Element(recipebook.get(j).product);
+								temp.x = e.getX();
+								temp.y = e.getY();
+								elements.remove(elements.get(i));
+								elements.remove(clicked);
+								elements.add(temp);
+								sideBarAdd(recipebook.get(j).product);
+								break;
+							}
 
-						if (recipebook.get(j).id2 == clicked.id && recipebook.get(j).id1 == elements.get(i).id) {
-							Element temp = new Element(recipebook.get(j).product);
-							temp.x = e.getX();
-							temp.y = e.getY();
-							elements.remove(elements.get(i));
-							elements.remove(clicked);
-							elements.add(temp);
-							sideBarAdd(i);
-							break;
+							else if (recipebook.get(j).id2 == clicked.id
+									&& recipebook.get(j).id1 == elements.get(i).id) {
+								Element temp = new Element(recipebook.get(j).product);
+								temp.x = e.getX();
+								temp.y = e.getY();
+								elements.remove(elements.get(i));
+								elements.remove(clicked);
+								elements.add(temp);
+								sideBarAdd(recipebook.get(j).product);
+								break;
+							}
 						}
 
 					}
@@ -185,20 +190,21 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		// TODO Auto-generated method stub
 
 	}
+
 	void sideBarAdd(int tempId) {
-		//Graphics g;
+		// Graphics g;
 		int count = 0;
-		for(Element element: elements) {
+		for (Element element : elements) {
 			if (element.sidebar) {
 				count++;
 			}
 		}
 		count++;
-		//math for location goes here
-		Element element  = new Element(tempId);
+		// math for location goes here
+		Element element = new Element(tempId);
 		elements.add(element);
-		element.setY(count*60);
-		elements.get(elements.size()-1).setSidebar(true);
-		//elements.get(elements.size()-1).draw(g);
+		element.setY(count * 80);
+		elements.get(elements.size() - 1).setSidebar(true);
+		// elements.get(elements.size()-1).draw(g);
 	}
 }

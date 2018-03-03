@@ -20,7 +20,7 @@ public class Element {
 	HashMap<Integer, Integer>map = new HashMap<>();
 	enum ElementName {
 		AIR, EARTH, FIRE, WATER, STEAM, PRESSURE, STONE, MIST, MUD, BRICK,
-		WALL, HOUSE, CITY, POND, SEA, LAVA, VOLCANO, ISLAND, LAND, CONTINET, 
+		WALL, HOUSE, CITY, WATERFALL, OCEAN, LAVA, VOLCANO, ISLAND, LAND, CONTINET, 
 		PLANET, RAIN, PLANT, GUNPOWDER, ENERGY, DUST, SWAMP, LIFE, SAND, TIME,
 		HUMAN, CLOCK, GLASS, METAL, BLADE, SWORD, COMPUTER, ELECTRITY, SUPERCOMPUTER,
 		TIMEMACHINE,
@@ -87,45 +87,51 @@ public class Element {
 			break;
 		case 8:
 			this.elementName = ElementName.MUD;
+			img = loadimg("src/mud.png");
 			this.color = Color.gray;
 			System.out.println("Created Mud");
 			this.name = "Mud";
 			break;
 		case 9:
 			this.elementName = ElementName.BRICK;
+			img = loadimg("src/brick.png");
 			this.color = Color.red;
 			System.out.println("Created Brick");
 			this.name = "Brick";
 			break;
 		case 10:
 			this.elementName = ElementName.WALL;
+			img = loadimg("src/wall.png");
 			this.color = Color.red;
 			System.out.println("Created Wall");
 			this.name = "Wall";
 			break;
 		case 11:
 			this.elementName = ElementName.HOUSE;
+			img = loadimg("src/house.png");
 			this.color = Color.orange;
 			System.out.println("Created House");
 			this.name = "House";
 			break;
 		case 12:
 			this.elementName = ElementName.CITY;
+			img = loadimg("src/city.png");
 			this.color = Color.orange;
 			System.out.println("Created City");
 			this.name = "City";
 			break;
 		case 13:
-			this.elementName = ElementName.POND;
+			this.elementName = ElementName.WATERFALL;
+			img = loadimg("src/waterfall.png");
 			this.color = Color.blue;
-			System.out.println("Created Pond");
-			this.name = "Pond";
+			System.out.println("Created waterFall");
+			this.name = "WaterFall";
 			break;
 		case 14:
-			this.elementName = ElementName.SEA;
+			this.elementName = ElementName.OCEAN;
 			this.color = Color.blue;
-			System.out.println("Created Sea");
-			this.name = "Sea";
+			System.out.println("Created OCEAN");
+			this.name = "OCEAN";
 			break;
 		case 15:
 			this.elementName = ElementName.LAVA;
@@ -238,10 +244,10 @@ public class Element {
 		case CITY:
 			return 13;
 			
-		case POND:
+		case WATERFALL:
 			return 14;
 		
-		case SEA:
+		case OCEAN:
 			return 15;
 		
 		case LAVA:
