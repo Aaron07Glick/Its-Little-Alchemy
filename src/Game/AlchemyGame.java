@@ -37,7 +37,11 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		recipebook.add(new Recipe(0, 2, 4));
 		recipebook.add(new Recipe(0, 4, 5));
 		recipebook.add(new Recipe(0, 5, 7));
-		recipebook.add(new Recipe(1, 3, 13));
+		recipebook.add(new Recipe(1, 3, 14));
+		recipebook.add(new Recipe(1, 5, 8));
+		recipebook.add(new Recipe(2, 8, 9));
+		recipebook.add(new Recipe(2,9,10));
+		recipebook.add(new Recipe(9,10,11));
 
 		gameframe.setSize(2000, 1000);
 		gameframe.addMouseListener(this);
@@ -152,8 +156,16 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 								temp.y = e.getY();
 								elements.remove(elements.get(i));
 								elements.remove(clicked);
-								elements.add(temp);
+								boolean sidebarContains = false;
+								for (int k = 0; k < elements.size(); k++) {
+									if (temp.id == elements.get(k).id) {
+										sidebarContains = true;
+									}
+								}
+								if(sidebarContains == false) {
 								sideBarAdd(recipebook.get(j).product);
+								}
+								elements.add(temp);
 								break;
 							}
 
@@ -164,8 +176,16 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 								temp.y = e.getY();
 								elements.remove(elements.get(i));
 								elements.remove(clicked);
-								elements.add(temp);
+								boolean sidebarContains = false;
+								for (int k = 0; k < elements.size(); k++) {
+									if (temp.id == elements.get(k).id) {
+										sidebarContains = true;
+									}
+								}
+								if(sidebarContains == false) {
 								sideBarAdd(recipebook.get(j).product);
+								}
+								elements.add(temp);
 								break;
 							}
 						}

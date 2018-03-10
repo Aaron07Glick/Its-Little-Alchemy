@@ -19,7 +19,7 @@ public class Element {
 	BufferedImage img = null;
 	HashMap<Integer, Integer>map = new HashMap<>();
 	enum ElementName {
-		AIR, EARTH, FIRE, WATER, STEAM, PRESSURE, STONE, MIST, MUD, BRICK,
+		AIR, EARTH, FIRE, WATER, STEAM, PRESSURE, STONE, MIST, DIRT, MUD, BRICK,
 		WALL, HOUSE, CITY, WATERFALL, OCEAN, LAVA, VOLCANO, ISLAND, LAND, CONTINET, 
 		PLANET, RAIN, PLANT, GUNPOWDER, ENERGY, DUST, SWAMP, LIFE, SAND, TIME,
 		HUMAN, CLOCK, GLASS, METAL, BLADE, SWORD, COMPUTER, ELECTRITY, SUPERCOMPUTER,
@@ -86,96 +86,102 @@ public class Element {
 			this.name = "Mist";
 			break;
 		case 8:
+			this.elementName = ElementName.DIRT;
+			img = loadimg("src/dirt.png");
+			System.out.println("Created Dirt");
+			this.name = "Dirt";
+			break;
+		case 9:
 			this.elementName = ElementName.MUD;
 			img = loadimg("src/mud.png");
 			this.color = Color.gray;
 			System.out.println("Created Mud");
 			this.name = "Mud";
 			break;
-		case 9:
+		case 10:
 			this.elementName = ElementName.BRICK;
 			img = loadimg("src/brick.png");
 			this.color = Color.red;
 			System.out.println("Created Brick");
 			this.name = "Brick";
 			break;
-		case 10:
+		case 11:
 			this.elementName = ElementName.WALL;
 			img = loadimg("src/wall.png");
 			this.color = Color.red;
 			System.out.println("Created Wall");
 			this.name = "Wall";
 			break;
-		case 11:
+		case 12:
 			this.elementName = ElementName.HOUSE;
 			img = loadimg("src/house.png");
 			this.color = Color.orange;
 			System.out.println("Created House");
 			this.name = "House";
 			break;
-		case 12:
+		case 13:
 			this.elementName = ElementName.CITY;
 			img = loadimg("src/city.png");
 			this.color = Color.orange;
 			System.out.println("Created City");
 			this.name = "City";
 			break;
-		case 13:
+		case 14:
 			this.elementName = ElementName.WATERFALL;
 			img = loadimg("src/waterfall.png");
 			this.color = Color.blue;
 			System.out.println("Created waterFall");
 			this.name = "WaterFall";
 			break;
-		case 14:
+		case 15:
 			this.elementName = ElementName.OCEAN;
 			this.color = Color.blue;
 			System.out.println("Created OCEAN");
 			this.name = "OCEAN";
 			break;
-		case 15:
+		case 16:
 			this.elementName = ElementName.LAVA;
 			this.color = Color.red;
 			System.out.println("Created Lava");
 			this.name = "Lava";
 			break;
-		case 16:
+		case 17:
 			this.elementName = ElementName.VOLCANO;
 			this.color = Color.lightGray;
 			System.out.println("Created Volcano");
 			this.name = "Volcano";
 			break;
-		case 17:
+		case 18:
 			this.elementName = ElementName.ISLAND;
 			this.color = Color.cyan;
 			System.out.println("Created island");
 			this.name = "Island";
 			break;
-		case 18:
+		case 19:
 			this.elementName = ElementName.LAND;
 			this.color = Color.DARK_GRAY;
 			System.out.println("Created Land");
 			this.name = "Land";
 			break;
-		case 19:
+		case 20:
 			this.elementName = ElementName.CONTINET;
 			this.color = Color.green;
 			System.out.println("Created Continet");
 			this.name = "Continet";
 			break;
-		case 20:
+		case 21:
 			this.elementName = ElementName.PLANET;
 			this.color = Color.blue;
 			System.out.println("Created Planet");
 			this.name = "Planet";
 			break;
-		case 21:
+		case 22:
 			this.elementName =ElementName.RAIN;
 			this.color = Color.blue;
 			System.out.println("Created Rain");
 			this.name = "Rain";
 			break;
-		case 22:
+		case 23:
 			this.elementName = ElementName.PLANT;
 			this.color = Color.green;
 			System.out.println("Created Plant");
@@ -229,50 +235,53 @@ public class Element {
 		case MIST:
 			return 8;
 			
-		case MUD:
+		case DIRT:
 			return 9;
+			
+		case MUD:
+			return 10;
 		
 		case BRICK:
-			return 10;
+			return 11;
 			
 		case WALL:
-			return 11;
+			return 12;
 		
 		case HOUSE:
-			return 12;
-			
-		case CITY:
 			return 13;
 			
-		case WATERFALL:
+		case CITY:
 			return 14;
-		
-		case OCEAN:
+			
+		case WATERFALL:
 			return 15;
 		
-		case LAVA:
+		case OCEAN:
 			return 16;
 		
-		case VOLCANO:
+		case LAVA:
 			return 17;
 		
-		case ISLAND:
+		case VOLCANO:
 			return 18;
-			
-		case LAND:
+		
+		case ISLAND:
 			return 19;
 			
-		case CONTINET:
+		case LAND:
 			return 20;
 			
-		case PLANET:
+		case CONTINET:
 			return 21;
 			
-		case RAIN:
+		case PLANET:
 			return 22;
 			
-		case PLANT:
+		case RAIN:
 			return 23;
+			
+		case PLANT:
+			return 24;
 			
 		default:
 			return 0;
