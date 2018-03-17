@@ -2,11 +2,13 @@ package Game;
 
 import java.awt.Graphics;
 
+
 public class SideBar {
 	int x;
 	int y;
 	int width;
 	int height;
+	
 
 	SideBar() {
 		this.x = 1800;

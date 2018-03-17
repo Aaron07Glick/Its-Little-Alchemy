@@ -7,26 +7,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
-public class AlchemyGame extends JComponent implements ActionListener, Runnable, MouseMotionListener, MouseListener {
+public class AlchemyGame extends JComponent implements ActionListener, Runnable, MouseMotionListener, MouseListener, MouseWheelListener {
 	ArrayList<Element> elements = new ArrayList<>();
 	ArrayList<Element> sideElement = new ArrayList<>();
 	Timer paintTicker = new Timer(20, this);
 	JFrame gameframe = new JFrame();
-	// fire = new Image("flame (1).png");
 	Element clicked;
 	Element newElement;
 	SideBar sidebar = new SideBar();
 	int x = 1840;
 	int y = 10;
 	ArrayList<Recipe> recipebook = new ArrayList<>();
+	int offset = 0;
 
 	public void run() {
 		gameframe.add(this);
@@ -42,25 +45,30 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		recipebook.add(new Recipe(2, 8, 9));
 		recipebook.add(new Recipe(2,9,10));
 		recipebook.add(new Recipe(9,10,11));
+		recipebook.add(new Recipe(11, 10, 12));
 
 		gameframe.setSize(2000, 1000);
+		gameframe.addMouseWheelListener(this);
 		gameframe.addMouseListener(this);
 		gameframe.addMouseMotionListener(this);
+		
+		
 		if (elements.isEmpty()) {
-
+			
 			for (int i = 0; i < 4; i++) {
 				System.out.println("creating elements:" + i);
 
 				elements.add(new Element(i));
 				elements.get(i).setSidebar(true);
 				elements.get(i).setY((elements.size()) * 80);
-
+				sideElement.add(elements.get(i));
 			}
 
 		}
 		{
 
 		}
+		
 	}
 
 	public void paint(Graphics g) {
@@ -223,8 +231,30 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		// math for location goes here
 		Element element = new Element(tempId);
 		elements.add(element);
-		element.setY(count * 80);
+		element.setY(count * 80 + offset);
 		elements.get(elements.size() - 1).setSidebar(true);
+		sideElement.add(element);
 		// elements.get(elements.size()-1).draw(g);
+	}
+
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		// TODO Auto-generated method stub
+		
+		int notches = e.getWheelRotation();
+		if(notches < 0) {
+			offset -=10 ;
+		}
+		else if(notches > 0) {
+			offset +=10;
+		}
+		for (Element element : sideElement) {
+			if(notches < 0) {
+				element.y-=10;
+			}
+			else if(notches > 0) {
+				element.y+=10;
+			}
+		}
 	}
 }
