@@ -38,103 +38,104 @@ public class Element {
 		switch (id) {
 		case 0:
 			this.elementName = ElementName.AIR;
-			img = loadimg("src/air.png");
+			img = loadImg("src/air.png");
 			System.out.println("created air");
 			this.name = "Air";
 			break;
 		case 1:
 			this.elementName = ElementName.EARTH;
-			img = loadimg("src/earth.png");
+			img = loadImg("src/earth.png");
 			System.out.println("created earth");
 			this.name = "Earth";
 			break;
 		case 2:
 			this.elementName = ElementName.FIRE;
 			//this.color = Color.red;
-			img = loadimg("src/fire.png");
+			img = loadImg("src/fire.png");
 			System.out.println("create fire");
 			this.name = "Fire";
 			break;
 		case 3:
 			this.elementName = ElementName.WATER;
-			img = loadimg("src/water.png");
+			img = loadImg("src/water.png");
 			System.out.println("created water");
 			this.name = "Water";
 			break;
 		case 4:
 			this.elementName = ElementName.STEAM;
-			img = loadimg("src/steam.png");
+			img = loadImg("src/steam.png");
 			System.out.println("created Steam");
 			this.name = "Steam";
 			break;
 		case 5:
 			this.elementName = ElementName.PRESSURE;
-			img = loadimg("src/pressure.png");
+			img = loadImg("src/pressure.png");
 			System.out.println("created Pressure");
 			this.name = "Pressure";
 			break;
 		case 6:
 			this.elementName = ElementName.STONE;
-			img = loadimg("src/stone.png");
+			img = loadImg("src/stone.png");
 			System.out.println("Created Stone");
 			this.name = "Stone";
 			break;
 		case 7:
 			this.elementName= ElementName.MIST;
-			img = loadimg("src/mist.png");
+			img = loadImg("src/mist.png");
 			System.out.println("Created Mist");
 			this.name = "Mist";
 			break;
 		case 8:
 			this.elementName = ElementName.DIRT;
-			img = loadimg("src/dirt.png");
+			img = loadImg("src/dirt.png");
 			System.out.println("Created Dirt");
 			this.name = "Dirt";
 			break;
 		case 9:
 			this.elementName = ElementName.MUD;
-			img = loadimg("src/mud.png");
+			img = loadImg("src/mud.png");
 			this.color = Color.gray;
 			System.out.println("Created Mud");
 			this.name = "Mud";
 			break;
 		case 10:
 			this.elementName = ElementName.BRICK;
-			img = loadimg("src/brick.png");
+			img = loadImg("src/brick.png");
 			this.color = Color.red;
 			System.out.println("Created Brick");
 			this.name = "Brick";
 			break;
 		case 11:
 			this.elementName = ElementName.WALL;
-			img = loadimg("src/wall.png");
+			img = loadImg("src/wall.png");
 			this.color = Color.red;
 			System.out.println("Created Wall");
 			this.name = "Wall";
 			break;
 		case 12:
 			this.elementName = ElementName.HOUSE;
-			img = loadimg("src/house.png");
+			img = loadImg("src/house.png");
 			this.color = Color.orange;
 			System.out.println("Created House");
 			this.name = "House";
 			break;
 		case 13:
 			this.elementName = ElementName.CITY;
-			img = loadimg("src/city.png");
+			img = loadImg("src/city.png");
 			this.color = Color.orange;
 			System.out.println("Created City");
 			this.name = "City";
 			break;
 		case 14:
 			this.elementName = ElementName.WATERFALL;
-			img = loadimg("src/waterfall.png");
+			img = loadImg("src/waterfall.png");
 			this.color = Color.blue;
 			System.out.println("Created waterFall");
 			this.name = "WaterFall";
 			break;
 		case 15:
 			this.elementName = ElementName.OCEAN;
+			img = loadImg("src/Ocean.png");
 			this.color = Color.blue;
 			System.out.println("Created OCEAN");
 			this.name = "OCEAN";
@@ -309,7 +310,7 @@ public class Element {
 	public void setSidebar(boolean sidebar) {
 		this.sidebar = sidebar;
 	}
-	BufferedImage loadimg(String path) {
+	BufferedImage loadImg(String path) {
 		BufferedImage elementImg = null;
 		try {
 		  elementImg = ImageIO.read(new File(path));

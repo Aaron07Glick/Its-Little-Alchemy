@@ -112,8 +112,12 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		
 		int originalLength = elements.size();
 		for (int i = 0; i < originalLength; i++) {
+			if(elements.get(i).getX() > 1800 && !elements.get(i).getSideBar()) {
+				elements.remove(clicked);
+			}
 			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 100)) {
 				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 100)) {
 					if (!(elements.get(i).getSideBar())) {
@@ -140,6 +144,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 				}
 			}
 		}
+		
 	}
 
 	@Override
@@ -148,16 +153,16 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		int element1 = 0;
 		int element2 = 0;
 		int elementcount = 0;
-
+		
 		for (int i = 0; i < elements.size(); i++) {
 			if (e.getX() > elements.get(i).getX() && e.getX() < (elements.get(i).getX() + 90)) {
 				if (e.getY() > elements.get(i).getY() && e.getY() < (elements.get(i).getY() + 90)) {
-
 					// System.out.println("combining elements");
 					// System.out.println(elements.get(i).elementName);
 					// System.out.println(elements.get(element1).elementName);
-					if (clicked != null) {
+					if (clicked != null && elements.get(i).getX() < 1800) {
 						for (int j = 0; j < recipebook.size(); j++) {
+						
 							if (recipebook.get(j).id1 == clicked.id && recipebook.get(j).id2 == elements.get(i).id) {
 								Element temp = new Element(recipebook.get(j).product);
 								temp.x = e.getX();
@@ -199,7 +204,9 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 						}
 
 					}
-
+					if(clicked.getX() > 1800) {
+						elements.remove(clicked);
+					}
 					element1 = i;
 				}
 			}
