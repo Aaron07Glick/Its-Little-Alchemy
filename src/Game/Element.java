@@ -142,53 +142,162 @@ public class Element {
 			break;
 		case 16:
 			this.elementName = ElementName.LAVA;
+			img = loadImg("src/lava.png");
 			this.color = Color.red;
 			System.out.println("Created Lava");
 			this.name = "Lava";
 			break;
 		case 17:
 			this.elementName = ElementName.VOLCANO;
+			img = loadImg("src/volcano.png");
 			this.color = Color.lightGray;
 			System.out.println("Created Volcano");
 			this.name = "Volcano";
 			break;
 		case 18:
 			this.elementName = ElementName.ISLAND;
+			img = loadImg("src/island.png");
 			this.color = Color.cyan;
 			System.out.println("Created island");
 			this.name = "Island";
 			break;
 		case 19:
 			this.elementName = ElementName.LAND;
+			img = loadImg("src/land.png");
 			this.color = Color.DARK_GRAY;
 			System.out.println("Created Land");
 			this.name = "Land";
 			break;
 		case 20:
 			this.elementName = ElementName.CONTINET;
+			img = loadImg("src/Continet.png");
 			this.color = Color.green;
 			System.out.println("Created Continet");
 			this.name = "Continet";
 			break;
 		case 21:
 			this.elementName = ElementName.PLANET;
+			img = loadImg("src/planet.png");
 			this.color = Color.blue;
 			System.out.println("Created Planet");
 			this.name = "Planet";
 			break;
 		case 22:
 			this.elementName =ElementName.RAIN;
+			img = loadImg("src/rain.png");
 			this.color = Color.blue;
 			System.out.println("Created Rain");
 			this.name = "Rain";
 			break;
 		case 23:
 			this.elementName = ElementName.PLANT;
+			img = loadImg("src/plant.png");
 			this.color = Color.green;
 			System.out.println("Created Plant");
 			this.name = "Plant";
 			break;
-			
+		case 24:
+			this.elementName = ElementName.GUNPOWDER;
+			img = loadImg("src/GUNPOWDER.png");
+			System.out.println("created gunpowder");
+			this.name = "Gunpowder";
+			break;
+		case 25:
+			this.elementName = ElementName.ENERGY;
+			img = loadImg("src/energy.png");
+			System.out.println("created Energy");
+			this.name = "Energy";
+			break;
+		case 26:
+			this.elementName = ElementName.DUST;
+			img = loadImg("src/dust.png");
+			System.out.println("created Dust");
+			this.name = "Dust";
+			break;
+		case 27:
+			this.elementName = ElementName.SWAMP;
+			img = loadImg("src/Swamp.png");
+			System.out.println("created Swamp");
+			this.name = "Swamp";
+			break;
+		case 28:
+			this.elementName = ElementName.LIFE;
+			img = loadImg("src/DNA.png");
+			System.out.println("created LIFE");
+			this.name = "Life";
+			break;
+		case 29:
+			this.elementName = ElementName.SAND;
+			img = loadImg("src/Sand.png");
+			System.out.println("created Sand");
+			this.name = "Sand";
+			break;
+		case 30:
+			this.elementName = ElementName.TIME;
+			img = loadImg("src/HOURGLASS.png");
+			System.out.println("created Time");
+			this.name = "Time";
+			break;
+		case 31:
+			this.elementName = ElementName.HUMAN;
+			img = loadImg("src/Human.png");
+			System.out.println("created HUMAN");
+			this.name = "Human";
+			break;
+		case 32:
+			this.elementName = ElementName.CLOCK;
+			img = loadImg("src/clock.png");
+			System.out.println("created Clock");
+			this.name = "Clock";
+			break;
+		case 33:
+			this.elementName = ElementName.GLASS;
+			img = loadImg("src/Glass.png");
+			System.out.println("created GLASS");
+			this.name = "Glass";
+			break;
+		case 34:
+			this.elementName = ElementName.METAL;
+			img = loadImg("src/Metal.png");
+			System.out.println("created METAL");
+			this.name = "Metal";
+			break;
+		case 35:
+			this.elementName = ElementName.BLADE;
+			img = loadImg("src/Blade.png");
+			System.out.println("created Blade");
+			this.name = "Blade";
+			break;
+		case 36:
+			this.elementName = ElementName.SWORD;
+			img = loadImg("src/sword.png");
+			System.out.println("created Sword");
+			this.name = "Sword";
+			break;
+		case 37:
+			this.elementName = ElementName.COMPUTER;
+			img = loadImg("src/computer.png");
+			System.out.println("created Computer");
+			this.name = "Computer";
+			break;
+		case 38:
+			this.elementName = ElementName.ELECTRITY;
+			img = loadImg("src/Electity.png");
+			System.out.println("ELECTRITY");
+			this.name = "ELECTRITY";
+			break;
+		case 39:
+			this.elementName = ElementName.SUPERCOMPUTER;
+			img = loadImg("src/SuperComputer.png");
+			System.out.println("SUPERCOMPUTER");
+			this.name = "SUPERCOMPUTER";
+			break;
+		case 40:
+			this.elementName = ElementName.TIMEMACHINE;
+			img = loadImg("src/TimeMachine.png");
+			System.out.println("TIMEMACHINE");
+			this.name = "TIMEMACHINE";
+			break;
 		}
 		
 		//new Element(map.get(hash(name, name)));
@@ -283,6 +392,58 @@ public class Element {
 			
 		case PLANT:
 			return 24;
+			
+		case GUNPOWDER:
+			return 25;
+			
+		case ENERGY:
+			return 26;
+			
+		case DUST:
+			return 27;
+			
+		case SWAMP:
+			return 28;
+			
+		case LIFE:
+			return 29;
+			
+		case SAND:
+			return 30;
+			
+		case TIME:
+			return 31;
+			
+		case HUMAN:
+			return 32;
+			
+		case CLOCK:
+			return 33;
+			
+		case GLASS:
+			return 34;
+			
+		case METAL:
+			return 35;
+			
+		case BLADE:
+			return 36;
+			
+		case SWORD:
+			return 37;
+			
+		case COMPUTER:
+			return 38;
+			
+		case ELECTRITY:
+			return 39;
+			
+		case SUPERCOMPUTER:
+			return 40;
+			
+		case TIMEMACHINE:
+			return 41;
+			
 			
 		default:
 			return 0;
