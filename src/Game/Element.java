@@ -177,7 +177,7 @@ public class Element {
 			break;
 		case 21:
 			this.elementName = ElementName.PLANET;
-			img = loadImg("src/planet.png");
+			img = loadImg("src/mars.png");
 			this.color = Color.blue;
 			System.out.println("Created Planet");
 			this.name = "Planet";
