@@ -57,7 +57,7 @@ public class AlchemyGame extends JComponent implements ActionListener, Runnable,
 		recipebook.add(new Recipe(20,15,21));
 		recipebook.add(new Recipe(0,3,22));
 		recipebook.add(new Recipe(1,22,23));
-		recipebook.add(new Recipe(29, 25, 24));
+		recipebook.add(new Recipe(29, 17, 24));
 		recipebook.add(new Recipe(4,5,25));
 		recipebook.add(new Recipe(29,5,26));
 		recipebook.add(new Recipe(5,6,29));
